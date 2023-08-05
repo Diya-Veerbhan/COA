@@ -1,0 +1,16 @@
+
+Compiler version S-2021.09; Runtime version S-2021.09;  
+Time =                    0 , F=    x
+Time =                   56 , F=   75
+Time =                   76 , F=   66
+Time =                   96 , F=  112
+Time =                  116 , F=   62
+Time =                  136 , F=    0
+Time =                  156 , F=   96
+Time =                  176 , F=   49
+Time =                  196 , F=  116
+$finish called from file "testbench.sv", line 28.
+$finish at simulation time                  300
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 300 ns
+CPU Time:      0.460 seconds;       Data structure size:   0.0Mb
