@@ -1,0 +1,20 @@
+Contains Synopsys proprietary information.
+Compiler version S-2021.09; Runtime version S-2021.09;  
+Time =                    0, Z =     x
+Time =                   27, Z =   8
+Time =                   47, Z =  24
+Time =                   67, Z =   3
+Time =                   87, Z =  28
+Time =                  107, Z =   3
+Time =                  127, Z =  52
+Mem[        125] =     8
+Mem[        126] =    24
+Mem[        127] =     3
+Mem[        128] =    28
+Mem[        129] =     3
+Mem[        130] =    52
+$finish called from file "testbench.sv", line 39.
+$finish at simulation time                  300
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 300 ns
+CPU Time:      0.460 seconds;       Data structure size:   0.0Mb
