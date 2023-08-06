@@ -1,4 +1,5 @@
 //verilog code for the design
+//Implemented using Eda playground
 module mypipe( F, A, B, C, D, clk);
   parameter N=10;
   
