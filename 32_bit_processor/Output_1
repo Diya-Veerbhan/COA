@@ -1,0 +1,14 @@
+Chronologic VCS simulator copyright 1991-2021
+Contains Synopsys proprietary information.
+Compiler version S-2021.09; Runtime version S-2021.09;  
+R0 -  0
+R1 - 10
+R2 - 20
+R3 - 25
+R4 - 30
+R5 - 55
+$finish called from file "testbench.sv", line 42.
+$finish at simulation time                  300
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 300 ns
+CPU Time:      0.740 seconds;       Data structure size:   0.0Mb
