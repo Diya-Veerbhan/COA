@@ -1,4 +1,4 @@
-# Design and Verification of a 32-bit RISC architecture based pipelined processor using Verilog
+# Design and Verification of a 32-bit RISC architecture based pipelined processor 
 
 ## Introduction
 * It is a 32-bit processor, i.e. can operate on 32-bits of data at a time
