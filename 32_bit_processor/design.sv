@@ -1,7 +1,7 @@
 // my 32-bit processor
 module pipe_32 (clk1, clk2);
   input clk1, clk2;
-  reg [31:0] PC, IF_ID_IR, IF_ID_NPC;
+  reg [31:0] PC, IF_ID_IR, IF_ID_NPC;//IR refers to Instruction register
   reg [31:0] ID_EX_IR, ID_EX_NPC, ID_EX_Imm, ID_EX_A, ID_EX_B;
   reg [2:0] ID_EX_type,  EX_MEM_type, MEM_WB_type;//to differentiate which type of instruction set it is : R_R; R-I; load-store; Branch 
   reg [31:0] EX_MEM_IR, EX_MEM_ALUOut, EX_MEM_B, EX_MEM_cond;
@@ -22,14 +22,14 @@ module pipe_32 (clk1, clk2);
     if(HALTED==0)
       begin
         if(((EX_MEM_IR[31:26] == BEQZ)&&(EX_MEM_cond == 1) ) ||((EX_MEM_IR[31:26] == BNEQZ)&&(EX_MEM_cond == 0)))
-          begin
-            IF_ID_IR <= #2 Mem[EX_MEM_ALUOut];
-            TAKEN_BRANCH <= #2 1'b1;
-            IF_ID_NPC <= #2 EX_MEM_ALUOut + 1;
+          begin //if opcode=branch and cond=true then we need to jump 
+            IF_ID_IR <= #2 Mem[EX_MEM_ALUOut];//Instruction register should be loaded from mem address
+            TAKEN_BRANCH <= #2 1'b1;//indicating we are taking instruction
+            IF_ID_NPC <= #2 EX_MEM_ALUOut + 1;//Updating the NPC 
             PC <= #2 EX_MEM_ALUOut + 1;
           end // if 
         else
-          begin
+          begin//normal setting
             IF_ID_IR <= #2 Mem[PC];
             IF_ID_NPC <= #2 PC + 1;
             PC <= #2 PC +1;
@@ -48,7 +48,8 @@ module pipe_32 (clk1, clk2);
         
         ID_EX_NPC <= #2 IF_ID_NPC;
         ID_EX_IR <= #2 IF_ID_IR;
-        ID_EX_Imm <= #2 {{16{IF_ID_IR[15]}},{IF_ID_IR[15:0]}};
+        ID_EX_Imm <= #2 {{16{IF_ID_IR[15]}},{IF_ID_IR[15:0]}};//making 16 bit into 32 bit by 
+        //extending the sign bit
         case (IF_ID_IR[31:26])
           ADD, SUB, AND, OR, SLT, MUL: ID_EX_type <= #2 RR_ALU;
           ADDI, SUBI, SLTI: ID_EX_type <= #2 RM_ALU;
@@ -94,7 +95,7 @@ module pipe_32 (clk1, clk2);
           end //load store
         BRANCH:
           begin
-            EX_MEM_ALUOut<= #2 ID_EX_NPC + ID_EX_Imm;
+            EX_MEM_ALUOut<= #2 ID_EX_NPC + ID_EX_Imm;//calculating the effective address
             EX_MEM_cond <= #2 (ID_EX_A == 0); 
           end //BRANCH
       endcase
