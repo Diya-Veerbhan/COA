@@ -56,16 +56,18 @@ Memory address contains 2 parts :
 
 ## Types of addressing modes 
 1. Implied mode  : 
-   data is the part of instruction. Zero address instruction are designed with implied addressing mode.
-   Opcode Data
+   data is the part of instruction. Zero address instruction are designed with implied addressing mode.  
+   Opcode | Data
 
-2. Immediate addressing mode: data is present in address field of instruction
-  Opcode Address(-> Data stored)
+2. Immediate addressing mode: data is present in address field of instruction  
+  Opcode Address(-> Data stored)  
+Example:  MOV AL, 35H  
+(move the data 35H into AL register)
 
-3. Register mode
+4. Register mode
   Opcode REgister (->Stores effective address -> data stored at this address)
 
-4. Auto Indexed (increment mode)
+5. Auto Indexed (increment mode)
    Effective address of the operand is the contents of a register specified in the instruction.
    After accessing the operand, the contents of this register are automatically incremented to
    point to the next consecutive memory location.(R1)+. Here one register reference, one memory
@@ -90,7 +92,8 @@ implement a stack as push and pop
  Auto increment and Auto decrement modes are useful for implementing “Last-In-First-Out” data structures.
 
 
-6. Direct addressing/ Absolute addressing Mode (symbol [ ])
+6. Direct addressing/ Absolute addressing Mode (symbol [ ])  
 ADD AL,[0301]   //add the contents of offset address 0301 to AL
 
 7. Indirect addressing Mode (symbol @ or () )
+---to be continued
